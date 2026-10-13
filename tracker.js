@@ -4,10 +4,10 @@ const expenses = [
 ];
 
 function listExpenses() {
-  const expenseList = expenses.forEach((e, index)=>{
+  expenses.forEach((e, index)=>{
     console.log(`${index + 1}. ${e.item} - GHS ${e.amount} (${e.category})`)
   });
-  const expenseTotal = console.log(`Total: GHS ${expenses.reduce((sum, i) => sum + i.amount, 0)}`);
+  console.log(`Total: GHS ${expenses.reduce((sum, i) => sum + i.amount, 0)}`);
 }
 
 function addExpense(item, amount, category) {
@@ -21,12 +21,18 @@ function addExpense(item, amount, category) {
     }
 }
 
+function summarizeExpenses(){
+  
+}
+
 const [command, item, amount, category] = process.argv.slice(2);
 
 if (command === "list") {
   listExpenses();
 } else if (command === "add") {
   addExpense(item, amount, category);
-} else {
+} else if(command === "summary"){
+  summarizeExpenses()
+}else {
   console.log("Usage: node tracker.js list | add <item> <amount> <category>");
 }
