@@ -22,7 +22,15 @@ function addExpense(item, amount, category) {
 }
 
 function summarizeExpenses(){
-  
+  const totals = {};
+
+  for (const e of expenses) {
+    totals[e.category] = (totals[e.category] || 0) + e.amount;
+  }
+
+  Object.entries(totals).forEach(([category, sum]) => {
+    console.log(`${category}: GHS ${sum}`);
+  });
 }
 
 const [command, item, amount, category] = process.argv.slice(2);
@@ -34,5 +42,5 @@ if (command === "list") {
 } else if(command === "summary"){
   summarizeExpenses()
 }else {
-  console.log("Usage: node tracker.js list | add <item> <amount> <category>");
+  console.log("Usage: node tracker.js list | add <item> <amount> <category> | summary");
 }
