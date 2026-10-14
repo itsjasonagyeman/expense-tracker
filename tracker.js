@@ -1,7 +1,19 @@
-const expenses = [
-  { item: "Lunch", amount: 25, category: "food" },
-  { item: "Taxi", amount: 18, category: "transport" }
-];
+const fs = require("fs");
+const FILE = "expenses.json"
+
+function loadExpenses(){
+  if(!fs.existsSync(FILE)){
+    return [];
+  }
+  const text = fs.readFileSync(FILE, "utf-8");
+  return JSON.parse(text)
+}
+
+function saveExpenses(expenses){
+  fs.writeFileSync(FILE, JSON.stringify(expenses, null, 2));
+}
+
+const expenses = loadExpenses();
 
 function listExpenses() {
   expenses.forEach((e, index)=>{
@@ -14,6 +26,7 @@ function addExpense(item, amount, category) {
     const value = Number(amount);
     if (item && category && !Number.isNaN(value)){
         expenses.push({item, amount: value, category});
+        saveExpenses(expenses);
         console.log(`Added: ${item} - GHS ${value} (${category})`)
     }else{
         console.log("Input error");
