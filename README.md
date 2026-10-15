@@ -1,5 +1,6 @@
 EXPENSE TRACKER
 A CLI application that allows users to manipulate (add, store, list etc.) expenses.
+Expenses are saved to a local file
 USAGE
 
 Add expenses:
