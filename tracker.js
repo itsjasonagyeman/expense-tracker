@@ -34,6 +34,21 @@ function addExpense(item, amount, category) {
     }
 }
 
+function deleteExpense(position) {
+  const number = Number(position);
+
+  if (!Number.isInteger(number) || number < 1 || number > expenses.length) {
+    console.log("Input error");
+    return;
+  }
+
+  const removed = expenses[number - 1];
+  const remaining = expenses.filter((e, i) => i !== number - 1);
+
+  saveExpenses(remaining);
+  console.log(`Deleted: ${removed.item} -${removed.amount} (${removed.category})`);
+}
+
 function summarizeExpenses(){
   const totals = {};
 
@@ -54,6 +69,7 @@ if (command === "list") {
   addExpense(item, amount, category);
 } else if(command === "summary"){
   summarizeExpenses()
-}else {
+} else if(command === "delete"){
+  deleteExpense(item)} else {
   console.log("Usage: node tracker.js list | add <item> <amount> <category> | summary");
 }
