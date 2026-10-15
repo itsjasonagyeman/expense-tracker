@@ -1,14 +1,13 @@
-EXPENSE TRACKER
-A CLI application that allows users to manipulate (add, store, list etc.) expenses.
-Expenses are saved to a local file
-USAGE
+# Expense Tracker
 
-Add expenses:
-Adds expenses to the list
+A command-line app for adding, listing, summarizing and deleting expenses.
+Data is saved to a local file.
+
+## Usage
+
+```
 node tracker.js add <item> <amount> <category>
-List expenses:
-Lists the expenses
 node tracker.js list
-Summarize expenses:
-Shows the totals per category of the expenses
 node tracker.js summary
+node tracker.js delete <number>
+```

@@ -71,5 +71,5 @@ if (command === "list") {
   summarizeExpenses()
 } else if(command === "delete"){
   deleteExpense(item)} else {
-  console.log("Usage: node tracker.js list | add <item> <amount> <category> | summary");
+  console.log("Usage: node tracker.js list | add <item> <amount> <category> | summary | deete");
 }
